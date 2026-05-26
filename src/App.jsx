@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import SearchIngredients from './components/SearchIngredients'
+import Header from './components/Header'
+// import SearchIngredients from './components/SearchIngredients'
 import RecipeList from './components/RecipeList'
-import RecipeDetails from './components/RecipeDetails'
+// import RecipeDetails from './components/RecipeDetails'
+// import Footer from './components/Footer'
 import './App.css'
 import Footer from "./components/Footer"
 import "./components/Footer.css"
@@ -19,17 +21,17 @@ function App() {
   }, [savedIngredients])
 
   return (
-    <div>
-      <nav>
-        <Routes>
-          <Route path="/" element={<SearchIngredients savedIngredients={savedIngredients} setSavedIngredients={setSavedIngredients} />} />
-          <Route path="/recipes" element={<RecipeList savedIngredients={savedIngredients} />} />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-        </Routes>
-      </nav>
-      <Footer />
-    </div>
-  )
+    <div className="app-wrapper">
+      <div className="content-container">
+        <Header />
+
+        <main>
+  
+            <RecipeList savedIngredients={savedIngredients} />
+
+        </main>
+      </div>
+  );
 }
 
-export default App
+export default App;
