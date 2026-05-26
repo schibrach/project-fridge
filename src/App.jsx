@@ -6,6 +6,8 @@ import RecipeList from './components/RecipeList'
 // import RecipeDetails from './components/RecipeDetails'
 // import Footer from './components/Footer'
 import './App.css'
+import Footer from "./components/Footer"
+import "./components/Footer.css"
 
 function App() {
   // localStorage för ingredienser
@@ -29,7 +31,6 @@ function App() {
 
         </main>
       </div>
-    </div>
   );
 }
 
