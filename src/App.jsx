@@ -23,16 +23,16 @@ function App() {
       <div className="content-container">
         <Header />
 
+        <SearchIngredients
+              savedIngredients={savedIngredients}
+              setSavedIngredients={setSavedIngredients}
+        />
+
          <main>
           <Routes>
             <Route
               path="/"
-              element={
-                <SearchIngredients
-                  savedIngredients={savedIngredients}
-                  setSavedIngredients={setSavedIngredients}
-                />
-              }
+              element={<RecipeList savedIngredients={savedIngredients} />}
             />
 
             <Route
