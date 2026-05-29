@@ -4,7 +4,8 @@ const BASE_URL = 'https://api.spoonacular.com';
 
 // Sök recept baserat på ingredienser
 export const searchRecipesByIngredients = async (ingredients) => {
-    const ingredientsString = ingredients.join(','); // Gör array till en sträng
+    const encodedIngredients = ingredients.map(ingredient => encodeURIComponent(ingredient.trim()));
+    const ingredientsString = encodedIngredients.join(','); // Gör array till en sträng
     const url = `${BASE_URL}/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredientsString}&number=12`;
 
     const response = await fetch(url);
