@@ -22,9 +22,9 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
     setIngredientInput("");
   }
 
-  function removeIngredient(ingredientToRemove) {
+  function removeIngredient(indexToRemove) {
     const updatedIngredients = savedIngredients.filter(
-      (ingredient) => ingredient !== ingredientToRemove
+      (ingredient, index) => index !== indexToRemove
     );
 
     setSavedIngredients(updatedIngredients);
@@ -34,7 +34,7 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
     <section className="search-ingredients">
       <h2>Vad har du hemma?</h2>
       <p>
-        Lägg till ingredienser du redan har hemma och få receptförslag
+         Skriv in vad du har hemma så får du receptförslag baserat på dina ingredienser.
       </p>
 
       <form className="ingredient-form" onSubmit={handleSubmit}>
@@ -60,9 +60,10 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
 
                 <button
                   type="button"
-                  onClick={() => removeIngredient(ingredient)}
+                  className="remove-ingredient"
+                  onClick={() => removeIngredient(index)}
                 >
-                  Ta bort
+                  ×
                 </button>
               </li>
             ))}

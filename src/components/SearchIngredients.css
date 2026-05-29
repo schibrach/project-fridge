@@ -31,7 +31,6 @@
 }
 
 .ingredient-form button,
-.ingredient-list button,
 .search-recipes-link {
   padding: 0.75rem 1rem;
   border: none;
@@ -49,6 +48,9 @@
 }
 
 .ingredient-list ul {
+  display:flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -58,11 +60,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
   background-color: #f7f7f7;
-  border-radius: 8px;
+  border-radius: 20px;
 }
 
 .search-recipes-link {
@@ -74,20 +76,28 @@
   text-decoration: none;
 }
 
+.remove-ingredient {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-ingredient:hover {
+  background-color: #d6d6d6;
+}
+
 @media (max-width: 600px) {
   .ingredient-form {
     flex-direction: column;
   }
-
-  .ingredient-list li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .ingredient-list li button {
-    width: 100%;
-  }
-
   .search-recipes-link {
     width: 100%;
     text-align: center;
