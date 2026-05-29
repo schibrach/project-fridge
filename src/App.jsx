@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
-import SearchIngredients from './components/SearchIngredients.jsx'
+import SearchIngredients from './components/SearchIngredients'
 import RecipeList from './components/RecipeList'
-//import RecipeDetails from './components/RecipeDetails.'
+import RecipeDetails from './components/RecipeDetails'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -35,10 +35,10 @@ function App() {
               }
             />
 
-            /*<Route
+            <Route
               path="/recipes"
               element={<RecipeList savedIngredients={savedIngredients} />}
-            /> */
+            />
 
             <Route
               path="/recipes/:id"
