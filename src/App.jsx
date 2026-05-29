@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
-// import SearchIngredients from './components/SearchIngredients'
+import SearchIngredients from './components/SearchIngredients.jsx'
 import RecipeList from './components/RecipeList'
-// import RecipeDetails from './components/RecipeDetails'
-// import Footer from './components/Footer'
+//import RecipeDetails from './components/RecipeDetails.'
+import Footer from './components/Footer'
 import './App.css'
-// import Footer from "./components/Footer"
 
 function App() {
   // localStorage för ingredienser
@@ -24,8 +23,28 @@ function App() {
       <div className="content-container">
         <Header />
 
-        <main>
-            <RecipeList savedIngredients={savedIngredients} />
+         <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <SearchIngredients
+                  savedIngredients={savedIngredients}
+                  setSavedIngredients={setSavedIngredients}
+                />
+              }
+            />
+
+            <Route
+              path="/recipes"
+              element={<RecipeList savedIngredients={savedIngredients} />}
+            />
+
+            <Route
+              path="/recipes/:id"
+              element={<RecipeDetails />}
+            />
+          </Routes>
         </main>
       </div>
     </div>
