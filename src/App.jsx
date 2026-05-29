@@ -35,10 +35,10 @@ function App() {
               }
             />
 
-            <Route
+            /*<Route
               path="/recipes"
               element={<RecipeList savedIngredients={savedIngredients} />}
-            />
+            /> */
 
             <Route
               path="/recipes/:id"
