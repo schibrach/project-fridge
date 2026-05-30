@@ -1,12 +1,13 @@
 .footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background: transparent;
     text-align: center;
-    padding: 1rem;
-    background-color: white;
-    border-top: 1px solid #ddd;
-    margin-top: 2rem;
+    border-top: 2px solid rgba(0,0,0,0.1);
 }
 
 .footer p {
     margin: 0.3rem 0;
+    color: #555;
     font-size: 0.9rem;
 }
