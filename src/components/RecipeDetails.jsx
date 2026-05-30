@@ -55,9 +55,19 @@ function RecipeDetails() {
         ))}
       </ul>
 
-      <h2>Instructions</h2>
-      {recipe.instructions ? (
-        <div dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
+           <h2>Instructions</h2>
+
+      {recipe.analyzedInstructions?.[0]?.steps?.length > 0 ? (
+        <ol className="instructions-list">
+          {recipe.analyzedInstructions[0].steps[0].step
+            .split('.')
+            .filter((sentence) => sentence.trim() !== '')
+            .map((sentence, index) => (
+              <li key={index}>
+                {sentence.trim()}.
+              </li>
+            ))}
+        </ol>
       ) : (
         <p>No instructions available.</p>
       )}
@@ -65,4 +75,4 @@ function RecipeDetails() {
   )
 }
 
-export default RecipeDetails;
+export default RecipeDetails
