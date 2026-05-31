@@ -21,9 +21,9 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
 
     // Kontrollerar om ingrediensen redan finns i listan
     if (savedIngredients.includes(newIngredient)) {
-    setMessage("Den här ingrediensen finns redan i listan.");
-    setIngredientInput("");
-    return;
+      setMessage("Den här ingrediensen finns redan i listan.");
+      setIngredientInput("");
+      return;
 }
 
      // Lägger till den nya ingrediensen i listan
@@ -44,8 +44,8 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
 
   // Rensar hela ingredienslistan
   function clearIngredients() {
-  setSavedIngredients([]);
-  setMessage("");
+    setSavedIngredients([]);
+    setMessage("");
 }
 
   return (
@@ -53,7 +53,7 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
     <section className="search-ingredients">
       <h2>What ingredients do you have?</h2>
       <p>
-         Add the ingredients you have at home to get recipe suggestions based on them
+         Add the ingredients you have at home and find recipes that match them.
       </p>
 
       <form className="ingredient-form" onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
           onChange={(event) => setIngredientInput(event.target.value)}
         />
 
-        <button type="submit">Add</button>
+      <button type="submit">Add</button>
       </form>
 
       {message && <p className="ingredient-message">{message}</p>}
@@ -91,18 +91,20 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
   ))}
 </ul>
 
-{/* Knapp för att rensa hela ingredienslistan */}
-<button
-  type="button"
-  className="clear-ingredients-button"
-  onClick={clearIngredients}
->
-  Clear all
-</button>
+<div className="ingredient-actions">
+  <Link to="/recipes" className="search-recipes-link">
+    Find recipes
+  </Link>
 
-<Link to="/recipes" className="search-recipes-link">
-  Find recipes
-</Link>
+  {/* Knapp för att rensa hela ingredienslistan */}
+  <button
+    type="button"
+    className="clear-ingredients-button"
+    onClick={clearIngredients}
+  >
+    Clear all
+  </button>
+</div>
         </div>
       )}
     </section>
