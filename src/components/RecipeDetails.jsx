@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import './RecipeDetails.css'
 
 function RecipeDetails() {
@@ -41,6 +41,8 @@ function RecipeDetails() {
 
   return (
     <div className="recipe-details">
+      <Link to="/recipes" className="back-link">
+       Back to recipes</Link>
       <h1>{recipe.title}</h1>
 
       <img src={recipe.image} alt={recipe.title} />
