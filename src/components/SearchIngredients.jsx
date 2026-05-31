@@ -32,26 +32,26 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
 
   return (
     <section className="search-ingredients">
-      <h2>Vad har du hemma?</h2>
+      <h2>What ingredients do you have?</h2>
       <p>
-         Skriv in vad du har hemma så får du receptförslag baserat på dina ingredienser.
+         Add the ingredients you have at home to get recipe suggestions based on them
       </p>
 
       <form className="ingredient-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Exempel: pasta, tomat, ost"
+          placeholder="Example: tomato, cheese, rice"
           value={ingredientInput}
           onChange={(event) => setIngredientInput(event.target.value)}
         />
 
-        <button type="submit">Lägg till</button>
+        <button type="submit">Add</button>
       </form>
 
 {/* Ingredienslistan visas bara om användaren har lagt till minst en ingrediens */}
       {savedIngredients.length > 0 && (
         <div className="ingredient-list">
-          <h3>Dina ingredienser</h3>
+          <h3>Your ingredients</h3>
 
           <ul>
             {savedIngredients.map((ingredient, index) => (
@@ -70,7 +70,7 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
           </ul>
 
           <Link to="/recipes" className="search-recipes-link">
-            Hitta recept
+            Find recipes
           </Link>
         </div>
       )}
