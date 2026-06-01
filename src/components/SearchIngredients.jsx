@@ -19,12 +19,16 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
       return;
     }
 
-    // Kontrollerar om ingrediensen redan finns i listan
-    if (savedIngredients.includes(newIngredient)) {
-      setMessage("Den här ingrediensen finns redan i listan.");
+    // Kontrollerar om ingrediensen redan finns i listan, oavsett stora eller små bokstäver
+    const ingredientExists = savedIngredients.some(
+      (ingredient) => ingredient.toLowerCase() === newIngredient.toLowerCase()
+    );
+
+    if (ingredientExists) {
+      setMessage("This ingredient is already in the list.");
       setIngredientInput("");
       return;
-}
+    }
 
      // Lägger till den nya ingrediensen i listan
     setSavedIngredients([...savedIngredients, newIngredient]);
