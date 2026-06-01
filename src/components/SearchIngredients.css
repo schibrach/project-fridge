@@ -45,9 +45,15 @@
 }
 
 .ingredient-message {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.9rem;
+  padding: 0.65rem 1rem;
+  background-color: #fff3f3;
+  border: 1px solid #f0b6b6;
+  border-radius: 8px;
   color: #b00020;
+  font-size: 0.95rem;
 }
 
 .ingredient-list {
