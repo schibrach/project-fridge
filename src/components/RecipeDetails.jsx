@@ -50,6 +50,16 @@ function RecipeDetails() {
       <p><strong>Ready in:</strong> {recipe.readyInMinutes} minutes</p>
       <p><strong>Servings:</strong> {recipe.servings}</p>
 
+  
+  {(recipe.vegetarian || recipe.vegan || recipe.glutenFree || recipe.dairyFree) && (
+    <div className="recipe-tags">
+      {recipe.vegetarian && <span className="recipe-tag"> Vegetarian</span>}
+      {recipe.vegan && <span className="recipe-tag"> Vegan</span>}
+      {recipe.glutenFree && <span className="recipe-tag"> Gluten Free</span>}
+      {recipe.dairyFree && <span className="recipe-tag"> Dairy Free</span>}
+    </div>
+  )}
+
       <h2>Ingredients</h2>
       <ul>
         {recipe.extendedIngredients?.map((ingredient) => (

@@ -63,13 +63,7 @@
   }
 }
 
-.recipe-details div {
-  line-height: 1.6;
-  font-size: 1rem;
-  background-color: #f7f7f7;
-  padding: 1rem;
-  border-radius: 8px;
-}
+
 
 .instructions-list {
   background: #f7f7f7;
@@ -98,4 +92,20 @@
 .back-link:hover {
   background-color: #333;
   
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.recipe-tag {
+  background-color: #dff3e3;
+  color: #2d6a4f;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
