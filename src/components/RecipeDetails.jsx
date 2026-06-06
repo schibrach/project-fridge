@@ -71,20 +71,14 @@ function RecipeDetails() {
 
       {recipe.analyzedInstructions?.[0]?.steps?.length > 0 ? (
         <ol className="instructions-list">
-          {recipe.analyzedInstructions[0].steps[0].step
-            .split('.')
-            .filter((sentence) => sentence.trim() !== '')
-            .map((sentence, index) => (
-              <li key={index}>
-                {sentence.trim()}.
-              </li>
-            ))}
+          {recipe.analyzedInstructions[0].steps.map((step) => (
+            <li key={step.number}>{step.step}</li>
+          ))}
         </ol>
       ) : (
         <p>No instructions available.</p>
       )}
     </div>
-  )
-}
+  )}
 
 export default RecipeDetails
