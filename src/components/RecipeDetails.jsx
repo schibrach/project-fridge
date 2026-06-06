@@ -8,6 +8,7 @@ function RecipeDetails() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Hämtar info om det valda receptet från Spoonacular API
   useEffect(() => {
     async function getRecipeDetails() {
       try {
@@ -50,7 +51,7 @@ function RecipeDetails() {
       <p><strong>Ready in:</strong> {recipe.readyInMinutes} minutes</p>
       <p><strong>Servings:</strong> {recipe.servings}</p>
 
-  
+   {/*Visar kostrelaterade taggar*/}
   {(recipe.vegetarian || recipe.vegan || recipe.glutenFree || recipe.dairyFree) && (
     <div className="recipe-tags">
       {recipe.vegetarian && <span className="recipe-tag"> Vegetarian</span>}
@@ -61,6 +62,7 @@ function RecipeDetails() {
   )}
 
       <h2>Ingredients</h2>
+        {/*Ingrediernser till recept skrivs ut*/}
       <ul>
         {recipe.extendedIngredients?.map((ingredient) => (
           <li key={ingredient.id}>{ingredient.original}</li>
@@ -68,7 +70,7 @@ function RecipeDetails() {
       </ul>
 
            <h2>Instructions</h2>
-
+        {/* Receptets tillagningssteg skrivs ut */}
       {recipe.analyzedInstructions?.[0]?.steps?.length > 0 ? (
         <ol className="instructions-list">
           {recipe.analyzedInstructions[0].steps.map((step) => (
