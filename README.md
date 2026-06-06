@@ -4,6 +4,9 @@ Project Fridge som är skapat av grupp 08 är en webbapplikation som hjälper an
 
 Användaren skriver in ingredienser (t.ex. “pasta”, “parmesan”, “tomato”) på engelska. Appen anropar Spoonacular API som returnerar receptförslag. Genom att klicka på ett recept visas detaljer som tillagningstid, antal portioner, ingredienslista och tillagningsinstruktioner. Användarens ingredienser sparas i localStorage, så de finns kvar även efter omladdning. Användaren kan när som helst lägga till eller ta bort ingredienser.
 
+## Projektstruktur
+![Komponentträd för Project Fridge](/public/projectfridge.drawio.png)
+
 ## Förutsättningar
 - Node.js (version 20.19+, 22.12+)
 - Spoonacular API-nyckel (gratis via [spoonacular.com](https://spoonacular.com/food-api))
