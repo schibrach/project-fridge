@@ -7,6 +7,26 @@ function RecipeDetails() {
   const [recipe, setRecipe] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [isSaved, setIsSaved] = useState(false)
+
+  const saveRecipe = () => {
+  const saved = JSON.parse(localStorage.getItem('savedRecipes')) || []
+
+  const savedRecipe = {
+    id: recipe.id,
+    title: recipe.title,
+    image: recipe.image
+  }
+
+  const alreadySaved = saved.some((item) => item?.id === recipe.id)
+
+  if (!alreadySaved) {
+    saved.push(savedRecipe)
+    localStorage.setItem('savedRecipes', JSON.stringify(saved))
+  }
+
+  setIsSaved(true)
+}
 
   useEffect(() => {
     async function getRecipeDetails() {
@@ -17,6 +37,12 @@ function RecipeDetails() {
 
         const data = await response.json()
         setRecipe(data)
+
+        const saved = JSON.parse(localStorage.getItem('savedRecipes')) || []
+        const alreadySaved = saved.some((item) => item?.id === data.id)
+
+        setIsSaved(alreadySaved)
+
       } catch (error) {
         setError('Could not load recipe details')
       }
@@ -41,11 +67,20 @@ function RecipeDetails() {
 
   return (
     <div className="recipe-details">
-      <Link to="/recipes" className="back-link">
-       Back to recipes</Link>
-      <h1>{recipe.title}</h1>
 
-      <img src={recipe.image} alt={recipe.title} />
+  <div className="recipe-actions">
+    <Link to="/recipes" className="back-link">
+      Back to recipes
+    </Link>
+
+    <button onClick={saveRecipe} className="save-button">
+    {isSaved ? 'Saved!' : 'Save recipe'}
+    </button>
+  </div>
+
+  <h1>{recipe.title}</h1>
+
+  <img src={recipe.image} alt={recipe.title} />
 
       <p><strong>Ready in:</strong> {recipe.readyInMinutes} minutes</p>
       <p><strong>Servings:</strong> {recipe.servings}</p>
