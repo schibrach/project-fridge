@@ -6,6 +6,9 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
   // Sparar texten som användaren skriver i inputfältet
   const [ingredientInput, setIngredientInput] = useState("");
 
+  // Sparar ett meddelande som visas om användaren skriver en dubblett
+  const [message, setMessage] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -16,10 +19,22 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
       return;
     }
 
+    // Kontrollerar om ingrediensen redan finns i listan, oavsett stora eller små bokstäver
+    const ingredientExists = savedIngredients.some(
+      (ingredient) => ingredient.toLowerCase() === newIngredient.toLowerCase()
+    );
+
+    if (ingredientExists) {
+      setMessage("This ingredient is already in the list.");
+      setIngredientInput("");
+      return;
+    }
+
      // Lägger till den nya ingrediensen i listan
     setSavedIngredients([...savedIngredients, newIngredient]);
      // Tömmer inputfältet efter att ingrediensen lagts till
     setIngredientInput("");
+    setMessage("");
   }
 
   function removeIngredient(indexToRemove) {
@@ -28,50 +43,72 @@ function SearchIngredients({ savedIngredients, setSavedIngredients }) {
     );
 
     setSavedIngredients(updatedIngredients);
+    setMessage("");
   }
 
+  // Rensar hela ingredienslistan
+  function clearIngredients() {
+    setSavedIngredients([]);
+    setMessage("");
+}
+
   return (
+
     <section className="search-ingredients">
-      <h2>Vad har du hemma?</h2>
+      <h2>What ingredients do you have?</h2>
       <p>
-         Skriv in vad du har hemma så får du receptförslag baserat på dina ingredienser.
+         Add the ingredients you have at home and find recipes that match them.
       </p>
 
       <form className="ingredient-form" onSubmit={handleSubmit}>
+        
         <input
           type="text"
-          placeholder="Exempel: pasta, tomat, ost"
+          placeholder="Example: tomato, cheese, rice"
           value={ingredientInput}
           onChange={(event) => setIngredientInput(event.target.value)}
         />
 
-        <button type="submit">Lägg till</button>
+      <button type="submit">Add</button>
       </form>
+
+      {message && <p className="ingredient-message">{message}</p>}
 
 {/* Ingredienslistan visas bara om användaren har lagt till minst en ingrediens */}
       {savedIngredients.length > 0 && (
         <div className="ingredient-list">
-          <h3>Dina ingredienser</h3>
+          <h3>Your ingredients</h3>
 
-          <ul>
-            {savedIngredients.map((ingredient, index) => (
-              <li key={index}>
-                <span>{ingredient}</span>
+  <ul>
+  {savedIngredients.map((ingredient, index) => (
+    <li key={index}>
+      <span>{ingredient}</span>
 
-                <button
-                  type="button"
-                  className="remove-ingredient"
-                  onClick={() => removeIngredient(index)}
-                >
-                  ×
-                </button>
-              </li>
-            ))}
-          </ul>
+      <button
+        type="button"
+        className="remove-ingredient"
+        onClick={() => removeIngredient(index)}
+      >
+        ×
+      </button>
+    </li>
+  ))}
+</ul>
 
-          <Link to="/recipes" className="search-recipes-link">
-            Hitta recept
-          </Link>
+<div className="ingredient-actions">
+  <Link to="/recipes" className="search-recipes-link">
+    Find recipes
+  </Link>
+
+  {/* Knapp för att rensa hela ingredienslistan */}
+  <button
+    type="button"
+    className="clear-ingredients-button"
+    onClick={clearIngredients}
+  >
+    Clear all
+  </button>
+</div>
         </div>
       )}
     </section>

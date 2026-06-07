@@ -37,11 +37,20 @@ function App() {
     />
   }
 />
+  <Route
+  path="/recipes"
+  element={
+    <>
+      <SearchIngredients
+        savedIngredients={savedIngredients}
+        setSavedIngredients={setSavedIngredients}
+      />
 
-            <Route
-              path="/recipes"
-              element={<RecipeList savedIngredients={savedIngredients} />}
-            />
+      <RecipeList savedIngredients={savedIngredients} />
+    </>
+  }
+/>
+            
 
             <Route
               path="/recipes/:id"
