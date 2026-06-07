@@ -6,6 +6,7 @@ import RecipeList from './components/RecipeList'
 import RecipeDetails from './components/RecipeDetails'
 import Footer from './components/Footer'
 import './App.css'
+import SavedRecipes from './components/SavedRecipes'
 
 function App() {
   // localStorage för ingredienser
@@ -55,6 +56,7 @@ function App() {
               path="/recipes/:id"
               element={<RecipeDetails />}
             />
+           <Route path="/saved" element={<SavedRecipes />} />
           </Routes>
         </main>
        <Footer/>
